@@ -1,0 +1,160 @@
+/*
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map.
+ * Help Source: https://stackoverflow.com/questions/19056012/half-fixed-half-scrollable-layout-that-can-be-scrolled-css
+ */
+ #map {
+    height: 100%;
+    width: 60%;
+	float: left;
+	overflow: hidden;
+  }
+
+/* Makes the sample page fill the window. */
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    max-width: 100%;
+    max-height:100%;
+  }
+
+.dropbtn {
+    background-color: #454545;
+    color: white;
+    padding: 4px 52.5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: gray;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: green;
+    min-width: 180px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-family: Verdana;
+    font-size: 14px;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: green;}
+
+.show {display: block;}
+
+.btn {
+    background-color: #454545;
+    color: white;
+    padding: 4px 52.5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana;
+    float: right;
+  }
+
+body {
+    background-color: green;
+    background-image: url("top.png");
+    /*background-repeat: no-repeat;*/
+  }
+
+.logo {
+    display: block;
+    margin:-60px auto;
+    z-index: 2;
+    position: relative;
+  }
+
+.page_title {
+    color: black;
+    display: block;
+    background-color: rgb(184, 183, 183);
+    padding: 20px 0px 20px 0px;
+    margin-top: 53px;
+    text-align: center;
+    z-index: 0;
+    position: relative;
+}
+ul {
+    list-style-type: none;
+	float: left;
+	font-size: 35px;
+	color: white;
+}
+
+h2, p {
+	color: white;
+	margin: 0px 0px 10px 0px;
+}
+
+li {
+	padding-bottom: 24px;
+}
+
+.apt_img {
+    width: 372px;
+    height: 258px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.prop_name {
+	margin: 0px 0px -30px 40px;
+}
+
+.prop_list {
+	position: relative;
+	overflow: hidden;
+	float: right;
+	margin: 0px 60px 0px 0px;
+}
+
+.prop_list:hover {
+	overflow: auto;
+}
+
+.container:not(button) {
+    display: block;
+    position: relative;
+	height: 100%;
+	margin-top: -35px;
+}
+
+/* Style for the property list on the right */
+.property-list {
+  max-height: 100%;
+  overflow-y: auto;
+  width: 40%;
+  box-sizing: border-box;
+  float: right;
+  padding: 20px; /* Add padding for better spacing */
+}
