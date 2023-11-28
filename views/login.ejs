@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="login.css">
+        <title>Login</title>
+    </head>
+    <body>
+		<!--Logo image-->
+	 <img class="logo_img" src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
+    	<div class="container">
+			<!--Sign in form-->
+            <form class="form" action="/action_page.php">
+				<!--Form Title-->
+				<h2 class="form_title">Login</h2>
+				<div class="form_div">
+					<!--Username input-->
+					<label class="form_label" for="username">Username</label><br>
+					<input type="text" class="form_input" id="username" name="username" placeholder=" ">
+				</div>
+				<div class="form_div">
+					<!--Password input-->
+					<label class="form_label" for="password">Password</label><br>
+					<input type="text" class="form_input" id="password" name="password">
+				</div>
+				<!--Forgot Password Hyperlink-->
+				<div class="forpass">
+					<p> <a href="#">Forgot Password</a> </p>
+				</div>
+				<!--Enter button-->
+				<input class="btn" type="submit" value="Enter">
+				<!--Create Account Hyperlink-->
+				<div class="create_acc">
+					<p><a href="/reg">Create an account</a></p>
+				</div>
+        	</form>
+        </div>
+    </body>
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: rgb(194, 194, 194);
+}
+.container {
+    display: flex;
+    position: relative;
+    top: 30vh;
+    justify-content: center;
+
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.form {
+    position: absolute;
+    background: linear-gradient(to top,
+    white 0%,
+    white 85%,
+    green 50%,
+    green 100%);
+    width: 560px;
+    padding: 4rem 2rem;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+    height: 40vh;
+}
+
+.logo_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.form_title {
+    text-align: center;
+    color: white;
+    margin-bottom: 70px;
+    margin-top: -50px;
+    padding: 5px;
+}
+
+.form_div {
+    position: relative;
+    height: 58px;
+    margin-bottom: 3.5rem;
+}
+
+.form_input {
+    display: block;
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+    width: 60%;
+    height: 50%;
+
+}
+
+.form_label {
+    position: relative;
+    margin-left: 50px;
+    padding-bottom: 50px;
+    font-size: 25px;
+}
+
+.btn {
+    display: block;
+    margin: auto;
+    margin-top: 35px;
+    border: none;
+    width: 30%;
+    height: 10%;
+    background-color: green;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.forpass {
+    text-align: center;
+    margin-top: -38px;
+}
+
+.create_acc {
+    text-align: center;
+    margin-top: 50px;
+}
+</style>
+</html>

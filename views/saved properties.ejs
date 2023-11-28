@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bookmarks</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="map.css" />
+    <script type="module" src="index.js"></script>
+
+    <!-- Dropdown Menu div -->
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Menu</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="/home">Home</a>
+          <a href="/Users/andrew.bradford/Desktop/Coding/Interactive Journal Links.html">Properties</a>
+          <a href="/roommate">Find a roommate</a>
+          <a href="/account">Manage Your Account</a>
+          <a href="/resource">Resources</a>
+          <a href="/contact">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Dropdown Menu scripts -->
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function msg() {
+            window.location.href = "/log";
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Logo image -->
+    <img src="./unt housing logo 4.png" class="logo" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
+
+    <!-- Sign in/up button -->
+    <form>
+        <input class="btn" type="button" value="Sign in/Sign up" onclick="msg()">
+    </form>
+
+    <h1 class="page_title">Saved Properties</h1>
+
+    <div class="container">
+        <!-- The div element for the map -->
+        <div id="map"></div>
+    <!-- prettier-ignore -->
+    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: "AIzaSyD2-leSU1-Y-t64qfFBJGDrfu9veLv4blc", v: "weekly"});</script>
+        <!-- Property listings loop -->
+        <div class="property-list">
+            <% properties.forEach(property => { %>
+                <div class="prop_list">
+                    <h2><%= property.name %></h2>
+                    <h2><%= property.address.street %>, <%= property.address.city %>, <%= property.address.state %> <%= property.address.zip_code %>, <%= property.address.country %></h2>
+                    <img src="Hunters_Creek.jpeg" class="apt_img" alt="<%= property.name %> front view">
+                    <ul>
+                        <li><strong>Price:</strong> <%= property.details.price %></li>
+                        <li><strong>Details:</strong> <%= property.details.bedrooms %> bedrooms, <%= property.details.bathrooms %> bathrooms, <%= property.details.square_footage %> sq.ft</li>
+                        <li><strong>Amenities:</strong> Parking: <%= property.amenities.parking ? 'Yes' : 'No' %>, Pets Allowed: <%= property.amenities.pets_allowed ? 'Yes' : 'No' %>, Pool: <%= property.amenities.pool ? 'Yes' : 'No' %>, Furnished: <%= property.amenities.furnished ? 'Yes' : 'No' %></li>
+                        <li>Phone #: <%= property.phone %></li>
+                    </ul>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+
+</html>

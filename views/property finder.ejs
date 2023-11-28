@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Property Finder</title>
+  <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Menu</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="/home">Home</a>
+    <a href="/Users/andrew.bradford/Desktop/Coding/Interactive Journal Links.html">Properties</a>
+    <a href="/roommate">Find a roommate</a>
+    <a href="/account">Manage Your Account</a>
+    <a href="/resource">Resources</a>
+    <a href="/contact">Contact Us</a>
+  </div>
+</div>
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyAw19EK4YioNzJwsDKG3C5PxTSX5Q4Rvt8"
+          type="text/javascript"></script>
+          <script>
+          /* When the user clicks on the button,
+          toggle between hiding and showing the dropdown content */
+          function myFunction() {
+              document.getElementById("myDropdown").classList.toggle("show");
+          }
+
+          // Close the dropdown if the user clicks outside of it
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
+              }
+            }
+          }
+
+          function msg() {
+            window.location.href = "/log";
+          }
+  </script>
+</head>
+<body>
+  <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
+  <form>
+  <input type="button" value="Sign in/Sign up" onclick="msg()">
+</form>
+  <div class="navbar" style="margin: 30px -10px; height: 80px;">
+    <div class="search-container" style="margin: 15px 0;">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    <div class="dd" style="margin: 15px 0;">
+      <button class="drop">Minimum Price</button>
+      <div class="dc">
+        <a href="#">$600</a>
+        <a href="#">$800</a>
+        <a href="#">$1000</a>
+        <a href="#">$1200</a>
+      </div>
+    </div>
+    <div class="dd9" style="margin: 15px 0;">
+      <button class="drop">Maximum Price</button>
+      <div class="dc9">
+        <a href="#">$1400</a>
+        <a href="#">$1600</a>
+        <a href="#">$1800</a>
+        <a href="#">$2000</a>
+      </div>
+    </div>
+    <div class="dd2" style="margin: 15px 15px;">
+      <button class="drop">Beds</button>
+      <div class="dc2">
+        <a href="#">1+</a>
+        <a href="#">2+</a>
+        <a href="#">3+</a>
+        <a href="#">4+</a>
+      </div>
+    </div>
+    <div class="dd3" style="margin: 15px 15px;">
+      <button class="drop">Bath</button>
+      <div class="dc3">
+        <a href="#">1+</a>
+        <a href="#">2+</a>
+        <a href="#">3+</a>
+      </div>
+    </div>
+    <div class="dd4" style="margin: 15px 15px;">
+      <button class="drop">Type</button>
+      <div class="dc4">
+        <a href="#">Apartment</a>
+        <a href="#">House</a>
+        <a href="#">Duplex</a>
+      </div>
+    </div>
+    <div class="dd5" style="margin: 15px 15px;">
+      <button class="drop">Size</button>
+      <div class="dc5">
+        <a href="#">< 500 sq ft</a>
+        <a href="#">> 500 sq ft</a>
+        <a href="#">> 600 sq ft</a>
+        <a href="#">> 700 sq ft</a>
+      </div>
+    </div>
+    <div class="dd6" style="margin: 15px 15px;">
+      <button class="drop">Amenities</button>
+      <div class="dc6">
+        <a href="#">Washer and Dryer</a>
+        <a href="#">Pet Friendly</a>
+        <a href="#">Pool</a>
+        <a href="#">Dishwasher</a>
+        <a href="#">Parking</a>
+        <a href="#">Balcony</a>
+        <a href="#">Garage</a>
+        <a href="#">Furnished</a>
+        <a href="#">Elevator</a>
+        <a href="#">Fitness Center</a>
+      </div>
+    </div>
+    <div class="dd7" style="margin: 15px 20px;">
+      <button class="drop">Sort</button>
+      <div class="dc7">
+        <a href="#">Lowest Rent</a>
+        <a href="#">Highest Rent</a>
+        <a href="#">Distance</a>
+        <a href="#">Smallest (sq ft)</a>
+        <a href="#">Largest (sq ft)</a>
+        <a href="#">Newest</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="map" style="width: 800px; height: 535px; margin: -30px -10px;"></div>
+
+  <script type="text/javascript">
+    var locations = [
+      ['The Retreat at Denton', 33.207359, -97.173492, 4],
+      ['UC Denton Student Housing', 33.213482, -97.161842, 5],
+      ['Denton Student Apartments', 33.214700, -97.158940, 3],
+      ['Uptown', 33.214298, -97.166000, 2],
+      ['Forum at Denton Station Student Apartments', 33.200000, -97.131170, 1]
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: new google.maps.LatLng(33.22168245053377, -97.1325830570667),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+</body>
+<style>
+.dropbtn {
+    background-color: #454545;
+    color: white;
+    padding: 4px 52.5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: gray;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #36ab3a;
+    min-width: 180px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-family: Verdana;
+    font-size: 14px;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: green;}
+
+.show {display: block;}
+
+.navbar {
+  overflow: hidden;
+  background-color: #F2F2F2;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 50px 50px;
+  text-decoration: none;
+}
+
+.navbar .search-container {
+  float: left;
+}
+
+.navbar input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.navbar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #1D5D27;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.navbar .search-container button:hover {
+  background: #ccc;
+}
+
+.dd {
+  float: left;
+  overflow: hidden;
+}
+
+.dd2 {
+  float: left;
+  overflow: hidden;
+}
+
+.dd3 {
+  float: left;
+  overflow: hidden;
+}
+
+.dd4 {
+  float: left;
+  overflow: hidden;
+}
+
+.dd5 {
+  float: left;
+  overflow: hidden;
+}
+
+.dd6 {
+  float: left;
+  overflow: hidden;
+}
+
+.dd7 {
+  float: right;
+  overflow: hidden;
+}
+
+.dd9 {
+  float: left;
+  overflow: hidden;
+}
+
+.dd .drop {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 30px;
+  background-color: #1D5D27;
+  font-family: Verdana;
+  margin: 0;
+}
+
+.dd2 .drop {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 30px;
+  background-color: #1D5D27;
+  font-family: Verdana;
+  margin: 0;
+}
+
+.dd3 .drop {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 30px;
+  background-color: #1D5D27;
+  font-family: Verdana;
+  margin: 0;
+}
+
+.dd4 .drop {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 35px;
+  background-color: #1D5D27;
+  font-family: Verdana;
+  margin: 0;
+}
+
+.dd5 .drop {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 39px;
+  background-color: #1D5D27;
+  font-family: Verdana;
+  margin: 0;
+}
+
+.dd6 .drop {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 47px;
+  background-color: #1D5D27;
+  font-family: Verdana;
+  margin: 0;
+}
+
+.dd7 .drop {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 50px;
+  background-color: #1D5D27;
+  font-family: Verdana;
+  margin: 0;
+}
+
+.dd9 .drop {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 30px;
+  background-color: #1D5D27;
+  font-family: Verdana;
+  margin: 0;
+}
+
+.navbar a:hover, .dd:hover .drop {
+  background-color: red;
+}
+
+.dd2:hover .drop {
+  background-color: red;
+}
+
+.dd3:hover .drop{
+  background-color: red;
+}
+
+.dd4:hover .drop{
+  background-color: red;
+}
+
+.dd5:hover .drop{
+  background-color: red;
+}
+
+.dd6:hover .drop{
+  background-color: red;
+}
+
+.dd7:hover .drop{
+  background-color: red;
+}
+
+.dd9:hover .drop{
+  background-color: red;
+}
+
+.dc {
+  display: none;
+  position: absolute;
+  background-color: #36ab3a;
+  min-width: 167px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dc a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: Verdana;
+}
+
+.dc a:hover {
+  background-color: #ddd;
+}
+
+.dc2 {
+  display: none;
+  position: absolute;
+  background-color: #36ab3a;
+  min-width: 91px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dc2 a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: Verdana;
+}
+
+.dc2 a:hover {
+  background-color: #ddd;
+}
+
+.dc3 {
+  display: none;
+  position: absolute;
+  background-color: #36ab3a;
+  min-width: 94px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dc3 a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: Verdana;
+}
+
+.dc3 a:hover {
+  background-color: #ddd;
+}
+
+.dc4 {
+  display: none;
+  position: absolute;
+  background-color: #36ab3a;
+  min-width: 90px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dc4 a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: Verdana;
+}
+
+.dc4 a:hover {
+  background-color: #ddd;
+}
+
+.dc5 {
+  display: none;
+  position: absolute;
+  background-color: #36ab3a;
+  min-width: 50px;
+  max-width: 110px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dc5 a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: Verdana;
+}
+
+.dc5 a:hover {
+  background-color: #ddd;
+}
+
+.dc6 {
+  display: none;
+  position: absolute;
+  background-color: #36ab3a;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dc6 a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: Verdana;
+}
+
+.dc6 a:hover {
+  background-color: #ddd;
+}
+
+.dc7 {
+  display: none;
+  position: absolute;
+  background-color: #36ab3a;
+  min-width: 40px;
+  max-width: 128px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dc7 a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: Verdana;
+}
+
+.dc7 a:hover {
+  background-color: #ddd;
+}
+
+.dc9 {
+  display: none;
+  position: absolute;
+  background-color: #36ab3a;
+  min-width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dc9 a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: Verdana;
+}
+
+.dc9 a:hover {
+  background-color: #ddd;
+}
+
+.dd:hover .dc {
+  display: block;
+}
+
+.dd2:hover .dc2 {
+  display: block;
+}
+
+.dd3:hover .dc3 {
+  display: block;
+}
+
+.dd4:hover .dc4 {
+  display: block;
+}
+
+.dd5:hover .dc5 {
+  display: block;
+}
+
+.dd6:hover .dc6 {
+  display: block;
+}
+
+.dd7:hover .dc7 {
+  display: block;
+}
+
+.dd9:hover .dc9 {
+  display: block;
+}
+
+.drop {
+
+}
+
+input[type="button"] {
+  background-color: #454545;
+  color: white;
+  padding: 4px 52.5px;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  font-family: Verdana;
+  margin: -20px 1220px;
+}
+
+body {
+  background-color: green;
+  background-image: url("top.png");
+  background-repeat: no-repeat;
+}
+
+img {
+  display: block;
+  margin:-60px auto;
+}
+
+</style>
+</html>

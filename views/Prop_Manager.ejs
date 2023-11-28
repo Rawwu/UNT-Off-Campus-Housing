@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="prop_manager.css">
+        <title>Property Manager</title>
+        <!--Dropdown Menu div-->
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Menu</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="/home">Home</a>
+              <a href="/Users/andrew.bradford/Desktop/Coding/Interactive Journal Links.html">Properties</a>
+              <a href="/roommate">Find a roommate</a>
+              <a href="/account">Manage Your Account</a>
+              <a href="/resource">Resources</a>
+              <a href="/contact">Contact Us</a>
+            </div>
+        </div>
+        <!--Dropdown Menu scripts-->
+        <script>
+            /* When the user clicks on the button,
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
+            }
+
+            function msg() {
+              window.location.href = "/log";
+            }
+        </script>
+    </head>
+    <body>
+        <!--Logo image-->
+		<img src="unt housing logo 4.png" class="logo" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
+		<!--Sign in/up button-->
+		<form>
+			<input class="btn" type="button" value="Sign in/Sign up" onclick="msg()">
+		</form>
+		<h1 class="page_title">Property Manager</h1>
+		<!--Property name & address-->
+		<div class="prop_name">
+			<h2>Hunter's Creek</h2>
+			<p>2250 Hunter's Creek Rd, Denton, TX 76210</p>
+		</div>
+		<!--Container for property photo, details, & buttons-->
+    	<div class="container">
+			<!--Property photo-->
+			<img src="Hunters_Creek.jpeg" class="apt_img" alt="Hunters creek apartment front view">
+			<!--List of property details-->
+			<ul>
+				<li>Price</li>
+				<li># of bedrooms</li>
+				<li>Amenities</li>
+				<li>Phone #</li>
+			</ul>
+			<!--Buttons div-->
+			<div class="btn_stack">
+				<button>Manage Rent</button>
+        <button>Take property off of market</button>
+				<button>Check Complaints</button>
+				<button>Change beds/baths</button>
+			</div>
+		</div>
+    </body>
+    <style>
+      img {
+    max-width: 100%;
+    max-height:100%;
+  }
+
+.dropbtn {
+    background-color: #454545;
+    color: white;
+    padding: 4px 52.5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: gray;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: green;
+    min-width: 180px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-family: Verdana;
+    font-size: 14px;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: green;}
+
+.show {display: block;}
+
+.btn {
+    background-color: #454545;
+    color: white;
+    padding: 4px 52.5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana;
+    float: right;
+  }
+
+body {
+    background-color: green;
+    background-image: url("top.png");
+    /*background-repeat: no-repeat;*/
+  }
+
+.logo {
+    display: block;
+    margin:-60px auto;
+    z-index: 2;
+    position: relative;
+  }
+.page_title {
+    color: black;
+    display: block;
+    background-color: rgb(184, 183, 183);
+    padding: 20px 0px 20px 0px;
+    margin-top: 53px;
+    text-align: center;
+    z-index: 0;
+    position: relative;
+    width: 1538px;
+    margin-left: -10px;
+}
+
+ul {
+    list-style-type: none;
+	float: left;
+	font-size: 35px;
+	color: white;
+  font-family: Verdana;
+}
+
+h1 {
+  font-family: Verdana;
+}
+
+h2, p {
+	color: white;
+	margin: 0px 0px 10px 0px;
+  font-family: Verdana;
+}
+
+li {
+	padding-bottom: 24px;
+  font-family: Verdana;
+}
+
+.apt_img {
+    width: 372px;
+    height: 258px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.prop_name {
+	margin: 0px 0px -30px 40px;
+}
+
+.container:not(button) {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.btn_stack {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin-left: 85px;
+	margin-bottom: 20px;
+	margin-top: 30px;
+}
+
+button:not(.dropbtn) {
+	font-size: 16px;
+	margin-bottom: 30px;
+	cursor: pointer;
+	width: 235px;
+  height: 40px;
+  font-family: Verdana;
+}
+
+      </style>
+</html>

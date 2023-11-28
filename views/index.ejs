@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale">
+  <title>Document</title>
+  <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Menu</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="/home">Home</a>
+    <a href="/Users/andrew.bradford/Desktop/Coding/Interactive Journal Links.html">Properties</a>
+    <a href="/roommate">Find a roommate</a>
+    <a href="/account">Manage Your Account</a>
+    <a href="/resource">Resources</a>
+    <a href="/contact">Contact Us</a>
+  </div>
+</div>
+  <script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  function msg() {
+    window.location.href = "/log";
+  }
+  </script>
+</head>
+<body>
+  <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;margin:-38.5px 600px">
+  <form>
+  <input type="button" value="Sign in/Sign up" onclick="msg()">
+</br>
+</br>
+</br>
+  <h1>Roommate Finder</h1>
+  <% var i = 0 %>
+  <% var name = name %>
+  <% var gender = gender %>
+  <% var program = program %>
+  <% var age = age %>
+  <% var graduation = graduation %>
+  <% var pets = pets %>
+  <% var smoke = smoke %>
+  <% var statuss = statuss %>
+  <% var name2 = name2 %>
+  <% var gender2 = gender2 %>
+  <% var program2 = program2 %>
+  <% var age2 = age2 %>
+  <% var graduation2 = graduation2 %>
+  <% var pets2 = pets2 %>
+  <% var smoke2 = smoke2 %>
+  <% var statuss2 = statuss2 %>
+  <% var name1 = name1 %>
+  <% var gender1 = gender1 %>
+  <% var program1 = program1 %>
+  <% var age1 = age1 %>
+  <% var graduation1 = graduation1 %>
+  <% var pets1 = pets1 %>
+  <% var smoke1 = smoke1 %>
+  <% var statuss1 = statuss1 %>
+  <% var name3 = name3 %>
+  <% var gender3 = gender3 %>
+  <% var program3 = program3 %>
+  <% var age3 = age3 %>
+  <% var graduation3 = graduation3 %>
+  <% var pets3 = pets3 %>
+  <% var smoke3 = smoke3 %>
+  <% var statuss3 = statuss3 %>
+  <%roommates.forEach(roommate => {%>
+    <% if(i == 0) { %>
+      <% name = roommate.name %>
+    </br>
+      <% gender = roommate.gender %>
+      <% program = roommate.program %>
+      <% age = roommate.age %>
+      <% graduation = roommate.graduation %>
+      <% pets = roommate.pets %>
+      <% smoke = roommate.smoke %>
+      <% statuss = roommate.statuss %>
+    <% } %>
+    <% if(i == 1) { %>
+      <% name1 = roommate.name %>
+      <% gender1 = roommate.gender %>
+      <% program1 = roommate.program %>
+      <% age1 = roommate.age %>
+      <% graduation1 = roommate.graduation %>
+      <% pets1 = roommate.pets %>
+      <% smoke1 = roommate.smoke %>
+      <% statuss1 = roommate.statuss %>
+    <% } %>
+    <% if(i == 2) { %>
+      <% name3 = roommate.name %>
+      <% gender3 = roommate.gender %>
+      <% program3 = roommate.program %>
+      <% age3 = roommate.age %>
+      <% graduation3 = roommate.graduation %>
+      <% pets3 = roommate.pets %>
+      <% smoke3 = roommate.smoke %>
+      <% statuss3 = roommate.statuss %>
+    <% } %>
+    <% if(i == 3) { %>
+      <% name2 = roommate.name %>
+      <% gender2 = roommate.gender %>
+      <% program2 = roommate.program %>
+      <% age2 = roommate.age %>
+      <% graduation2 = roommate.graduation %>
+      <% pets2 = roommate.pets %>
+      <% smoke2 = roommate.smoke %>
+      <% statuss2 = roommate.statuss %>
+      <% gender2 = gender2.toLowerCase() %>
+      <% program2 = program2.toLowerCase() %>
+    <% } %>
+    <% i = i + 1 %>
+  <% }) %>
+  <% if(gender == gender2 && program == program2) { %>
+      <p> Name: <%= name %> </p>
+      <p> Gender: <%= gender %> </p>
+      <p> Program: <%= program %> </p>
+      <p> Age: <%= age %> </p>
+      <p> Graduation Year:<%= graduation %> </p>
+      <p> Want pets: <%= pets %> </p>
+      <p> Do smoke: <%= smoke %> </p>
+      <p> Status: <%= statuss %> </p>
+  <% } %>
+  <% if(gender1 == gender2 && program1 == program2) { %>
+                        <p> Name: <%= name1 %> </p>
+                        <p> Gender: <%= gender1 %> </p>
+                        <p> Program: <%= program1 %> </p>
+                        <p> Age: <%= age1 %> </p>
+                        <p> Graduation Year: <%= graduation1 %> </p>
+                        <p> Wants pets: <%= pets1 %> </p>
+                        <p> Does smoke: <%= smoke1 %> </p>
+                        <p> Status: <%= statuss1 %> </p>
+
+  <% } %>
+  <% if(gender3 == gender2 && program3 == program2) { %>
+                        <p> <%= name3 %> </p>
+                        <p> <%= gender3 %> </p>
+                        <p> <%= program3 %> </p>
+                        <p> <%= age3 %> </p>
+                        <p> <%= graduation3 %> </p>
+                        <p> <%= pets3 %> </p>
+                        <p> <%= smoke3 %> </p>
+                        <p> <%= statuss3 %> </p>
+  <% } %>
+
+
+
+
+</body>
+<style>
+.dropbtn {
+    background-color: #454545;
+    color: white;
+    padding: 4px 52.5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: gray;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #36ab3a;
+    min-width: 180px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-family: Verdana;
+    font-size: 14px;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #36ab3a;}
+
+.show {display: block;}
+
+input[type="button"] {
+  background-color: #454545;
+  color: white;
+  padding: 4px 52.5px;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  font-family: Verdana;
+  margin: -20px 1220px;
+}
+
+body {
+  background-color: darkgray;
+  font-family: Arial, sans-serif;
+  background-image: url("top2.png");
+  background-repeat: no-repeat;
+}
+</style>
+</html>
