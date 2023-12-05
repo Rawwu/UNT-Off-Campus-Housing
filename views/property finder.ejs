@@ -13,9 +13,93 @@
     <a href="/contact">Contact Us</a>
   </div>
 </div>
-  <script src="http://maps.google.com/maps/api/js?key=AIzaSyAw19EK4YioNzJwsDKG3C5PxTSX5Q4Rvt8"
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAw19EK4YioNzJwsDKG3C5PxTSX5Q4Rvt8"
           type="text/javascript"></script>
-          <script>
+
+	<!--Functions for submitting form with filters-->
+	<script>
+
+		function submitFilterForm() {
+			// Get values from form fields
+			const minPrice = document.getElementById('minPrice').value;
+			const maxPrice = document.getElementById('maxPrice').value;
+			const beds = document.getElementById('beds').value;
+			const bath = document.getElementById('bath').value;
+			const type = document.getElementById('type').value;
+			const size = document.getElementById('size').value;
+			const amenities = document.getElementById('amenities').value;
+			const sort = document.getElementById('sort').value;
+
+		// Send a POST request to the server with filter criteria
+		fetch('/filter', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			minPrice: minPrice,
+			maxPrice: maxPrice,
+			beds: beds,
+			bath: bath,
+			type: type,
+			size: size,
+			amenities: amenities,
+			sort: sort,
+		}),
+		})
+		.then((response) => response.json())
+		.then((data) => {
+			// Handle the response data
+			updateFilteredProperties(data.properties);
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+		});
+		}
+
+		function updateFilteredProperties(properties) {
+		// Get the container for filtered properties
+		const filteredPropertiesContainer = document.getElementById('filtered-properties');
+
+		// Clear existing content
+		filteredPropertiesContainer.innerHTML = '';
+
+		// Check if there are properties to display
+		if (properties && properties.length > 0) {
+		// Create an unordered list
+		const ul = document.createElement('ul');
+
+		// Loop through properties and create list items
+		properties.forEach((property) => {
+			const li = document.createElement('li');
+
+			// Create HTML content for each property
+			li.innerHTML = `
+			<h3>${property.address.street}, ${property.address.city}, ${property.address.state}</h3>
+			<p>$${property.details.price} | ${property.details.bedrooms} Bed / ${property.details.bathrooms} Bath / ${property.details.square_footage} sq ft</p>
+			${property.amenities
+				? `<p>Amenities:
+					${property.amenities.parking ? 'Parking ' : ''}
+					${property.amenities.pets_allowed ? 'Pets Allowed ' : ''}
+					${property.amenities.pool ? 'Pool ' : ''}
+					${property.amenities.furnished ? 'Furnished ' : ''}
+				</p>`
+				: '<p>No amenities specified</p>'}
+			<p>Type: ${property.type}</p>`;
+
+			// Append list item to the unordered list
+			ul.appendChild(li);
+		});
+
+		// Append the unordered list to the container
+		filteredPropertiesContainer.appendChild(ul);
+		} else {
+		// If no properties are found, display a message
+		filteredPropertiesContainer.innerHTML = '<p>No properties found.</p>';
+		}
+		}
+    </script>
+    <script>
           /* When the user clicks on the button,
           toggle between hiding and showing the dropdown content */
           function myFunction() {
@@ -40,101 +124,114 @@
           function msg() {
             window.location.href = "/log";
           }
-  </script>
+	</script>
+	  <style>
+		/* Style for the form container */
+		#filterForm {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		margin-top: 47px;
+		background-color: white;
+		}
+
+		/* Style for form labels */
+		#filterForm label {
+		display: block;
+		margin-bottom: 5px;
+		font-weight: bold;
+		}
+
+		/* Style for form inputs */
+		#filterForm input,
+		#filterForm button {
+		flex: 1;
+		padding: 10px;
+		margin: 5px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+		}
+
+		/* Style for the submit button */
+		#filterForm button {
+		background-color: #1D5D27;
+		color: #fff;
+		cursor: pointer;
+		}
+
+		#filterForm button:hover {
+		background-color: #15441C;
+		}
+	</style>
 </head>
 <body>
   <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
   <form>
   <input type="button" value="Sign in/Sign up" onclick="msg()">
 </form>
-  <div class="navbar" style="margin: 30px -10px; height: 80px;">
-    <div class="search-container" style="margin: 15px 0;">
-      <form action="/action_page.php">
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit">Search</button>
-      </form>
-    </div>
-    <div class="dd" style="margin: 15px 0;">
-      <button class="drop">Minimum Price</button>
-      <div class="dc">
-        <a href="#">$600</a>
-        <a href="#">$800</a>
-        <a href="#">$1000</a>
-        <a href="#">$1200</a>
-      </div>
-    </div>
-    <div class="dd9" style="margin: 15px 0;">
-      <button class="drop">Maximum Price</button>
-      <div class="dc9">
-        <a href="#">$1400</a>
-        <a href="#">$1600</a>
-        <a href="#">$1800</a>
-        <a href="#">$2000</a>
-      </div>
-    </div>
-    <div class="dd2" style="margin: 15px 15px;">
-      <button class="drop">Beds</button>
-      <div class="dc2">
-        <a href="#">1+</a>
-        <a href="#">2+</a>
-        <a href="#">3+</a>
-        <a href="#">4+</a>
-      </div>
-    </div>
-    <div class="dd3" style="margin: 15px 15px;">
-      <button class="drop">Bath</button>
-      <div class="dc3">
-        <a href="#">1+</a>
-        <a href="#">2+</a>
-        <a href="#">3+</a>
-      </div>
-    </div>
-    <div class="dd4" style="margin: 15px 15px;">
-      <button class="drop">Type</button>
-      <div class="dc4">
-        <a href="#">Apartment</a>
-        <a href="#">House</a>
-        <a href="#">Duplex</a>
-      </div>
-    </div>
-    <div class="dd5" style="margin: 15px 15px;">
-      <button class="drop">Size</button>
-      <div class="dc5">
-        <a href="#">< 500 sq ft</a>
-        <a href="#">> 500 sq ft</a>
-        <a href="#">> 600 sq ft</a>
-        <a href="#">> 700 sq ft</a>
-      </div>
-    </div>
-    <div class="dd6" style="margin: 15px 15px;">
-      <button class="drop">Amenities</button>
-      <div class="dc6">
-        <a href="#">Washer and Dryer</a>
-        <a href="#">Pet Friendly</a>
-        <a href="#">Pool</a>
-        <a href="#">Dishwasher</a>
-        <a href="#">Parking</a>
-        <a href="#">Balcony</a>
-        <a href="#">Garage</a>
-        <a href="#">Furnished</a>
-        <a href="#">Elevator</a>
-        <a href="#">Fitness Center</a>
-      </div>
-    </div>
-    <div class="dd7" style="margin: 15px 20px;">
-      <button class="drop">Sort</button>
-      <div class="dc7">
-        <a href="#">Lowest Rent</a>
-        <a href="#">Highest Rent</a>
-        <a href="#">Distance</a>
-        <a href="#">Smallest (sq ft)</a>
-        <a href="#">Largest (sq ft)</a>
-        <a href="#">Newest</a>
-      </div>
-    </div>
+
+  <!-- Add the following form for filtering -->
+  <form id="filterForm" onsubmit="submitFilterForm(); return false;">
+    <label for="minPrice">Minimum Price:</label>
+    <input type="text" id="minPrice" name="minPrice">
+
+    <label for="maxPrice">Maximum Price:</label>
+    <input type="text" id="maxPrice" name="maxPrice">
+
+    <label for="beds">Beds:</label>
+    <input type="text" id="beds" name="beds">
+
+    <label for="bath">Bath:</label>
+    <input type="text" id="bath" name="bath">
+
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type">
+
+    <label for="size">Size:</label>
+    <input type="text" id="size" name="size">
+
+    <label for="amenities">Amenities:</label>
+    <input type="text" id="amenities" name="amenities">
+	<!--FIXME - Fix function and text box (too big )-->
+    <label for="sort">Sort:</label>
+    <input type="text" id="sort" name="sort">
+    <button type="submit">Apply Filters</button>
+  </form>
+
+  <div class="container">
+    <div id="map"></div>
+
+<!-- Display filtered properties on the right side -->
+	<div id="filtered-properties">
+		<h2>All Properties</h2>
+		<ul>
+		<!-- <% console.log(properties); %> -->
+		<% for (const property of properties) { %>
+			<li>
+			<h3><%= property.address.street %>, <%= property.address.city %>, <%= property.address.state %></h3>
+			<p>$<%= property.details.price %> | <%= property.details.bedrooms %> Bed / <%= property.details.bathrooms %> Bath / <%= property.details.square_footage %> sq ft</p>
+
+			<% if (property.amenities) { %>
+				<p>Amenities:
+				<% if (property.amenities.parking) { %> Parking <% } %>
+				<% if (property.amenities.pets_allowed) { %> Pets Allowed <% } %>
+				<% if (property.amenities.pool) { %> Pool <% } %>
+				<% if (property.amenities.furnished) { %> Furnished <% } %>
+				</p>
+			<% } else { %>
+				<p>No amenities specified</p>
+			<% } %>
+
+			<p>Type: <%= property.type %></p>
+			<!-- Add any other details you want to display -->
+			</li>
+		<% } %>
+		</ul>
+	</div>
+
   </div>
-  </div>
-  <div id="map" style="width: 800px; height: 535px; margin: -30px -10px;"></div>
 
   <script type="text/javascript">
     var locations = [
@@ -632,10 +729,6 @@
   display: block;
 }
 
-.drop {
-
-}
-
 input[type="button"] {
   background-color: #454545;
   color: white;
@@ -648,7 +741,7 @@ input[type="button"] {
 }
 
 body {
-  background-color: green;
+  background-color: #454545;
   background-image: url("top.png");
   background-repeat: no-repeat;
 }
@@ -657,6 +750,55 @@ img {
   display: block;
   margin:-60px auto;
 }
+
+/* Style for map */
+.container {
+      display: flex;
+    }
+
+    /* Style for the map (adjust dimensions as needed) */
+    #map {
+      width: 50%;
+      height: 100vh;
+      float: left;
+    }
+
+    /* Style for the filtered properties (scrollable if needed) */
+    #filtered-properties {
+      width: 50%;
+      height: 100vh;
+      overflow-y: auto; /* Enable vertical scrolling if needed */
+      padding: 20px;
+      float: right;
+    }
+
+    /* Additional styles for the filtered properties list */
+    #filtered-properties ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #filtered-properties li {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+	}
+
+	#filterForm {
+		margin-top: 50px;
+	}
+
+  p {
+    color: white;
+  }
+
+  h3 {
+    color: white;
+  }
+
+  h2 {
+    color: white;
+  }
 
 </style>
 </html>
