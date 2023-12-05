@@ -36,8 +36,8 @@ const roommateSchema = new mongoose.Schema({
 	program: String,
 	age: Number,
 	graduation: Number,
-	pets: Boolean,
-	smoke: Boolean,
+	pets: String,
+	smoke: String,
 	statuss: String
 });
 
