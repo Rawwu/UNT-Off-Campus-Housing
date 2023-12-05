@@ -43,7 +43,9 @@
   </script>
 </head>
 <body>
-  <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;margin:-38.5px 600px">
+  <div id="logo" class="logo">
+  <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;margin:-60px auto;display:block;">
+</div>
   <form>
   <input type="button" value="Sign in/Sign up" onclick="msg()">
 </br>
@@ -51,6 +53,8 @@
 </br>
   <h1>Roommate Finder</h1>
   <% var i = 0 %>
+  <% var j = 0 %>
+  <% var k = 0 %>
   <% var name = name %>
   <% var gender = gender %>
   <% var program = program %>
@@ -67,55 +71,12 @@
   <% var pets2 = pets2 %>
   <% var smoke2 = smoke2 %>
   <% var statuss2 = statuss2 %>
-  <% var name1 = name1 %>
-  <% var gender1 = gender1 %>
-  <% var program1 = program1 %>
-  <% var age1 = age1 %>
-  <% var graduation1 = graduation1 %>
-  <% var pets1 = pets1 %>
-  <% var smoke1 = smoke1 %>
-  <% var statuss1 = statuss1 %>
-  <% var name3 = name3 %>
-  <% var gender3 = gender3 %>
-  <% var program3 = program3 %>
-  <% var age3 = age3 %>
-  <% var graduation3 = graduation3 %>
-  <% var pets3 = pets3 %>
-  <% var smoke3 = smoke3 %>
-  <% var statuss3 = statuss3 %>
+  <% let check %>
   <%roommates.forEach(roommate => {%>
-    <% if(i == 0) { %>
-      <% name = roommate.name %>
-    </br>
-      <% gender = roommate.gender %>
-      <% program = roommate.program %>
-      <% age = roommate.age %>
-      <% graduation = roommate.graduation %>
-      <% pets = roommate.pets %>
-      <% smoke = roommate.smoke %>
-      <% statuss = roommate.statuss %>
-    <% } %>
-    <% if(i == 1) { %>
-      <% name1 = roommate.name %>
-      <% gender1 = roommate.gender %>
-      <% program1 = roommate.program %>
-      <% age1 = roommate.age %>
-      <% graduation1 = roommate.graduation %>
-      <% pets1 = roommate.pets %>
-      <% smoke1 = roommate.smoke %>
-      <% statuss1 = roommate.statuss %>
-    <% } %>
-    <% if(i == 2) { %>
-      <% name3 = roommate.name %>
-      <% gender3 = roommate.gender %>
-      <% program3 = roommate.program %>
-      <% age3 = roommate.age %>
-      <% graduation3 = roommate.graduation %>
-      <% pets3 = roommate.pets %>
-      <% smoke3 = roommate.smoke %>
-      <% statuss3 = roommate.statuss %>
-    <% } %>
-    <% if(i == 3) { %>
+    <% j = j + 1 %>
+  <% }) %>
+  <%roommates.forEach(roommate => {%>
+    <% if(k == j-1) { %>
       <% name2 = roommate.name %>
       <% gender2 = roommate.gender %>
       <% program2 = roommate.program %>
@@ -127,41 +88,46 @@
       <% gender2 = gender2.toLowerCase() %>
       <% program2 = program2.toLowerCase() %>
     <% } %>
+    <% k = k + 1 %>
+  <% }) %>
+  <%roommates.forEach(roommate => {%>
+    <% name = roommate.name %>
+    <% gender = roommate.gender %>
+    <% program = roommate.program %>
+    <% age = roommate.age %>
+    <% graduation = roommate.graduation %>
+    <% pets = roommate.pets %>
+    <% smoke = roommate.smoke %>
+    <% statuss = roommate.statuss %>
+    <% if(gender == gender2 && program == program2 && i != j-1 && statuss !== check) { %>
+        <div class="profile">
+        <% if(gender2 == "female") {%>
+          <img src="sw.jpg" alt="picture of Sigourney Weaver from Alien">
+        <% } %>
+        <% if(gender2 == "male") {%>
+          <img src="kr.jpg" alt="picture of Keanu Reeves from Bill and Ted">
+        <% } %>
+        <div class="text">
+        <p> Name: <%= name %> </p>
+        <p> Gender: <%= gender %> </p>
+        <p> Program: <%= program %> </p>
+        <p> Age: <%= age %>        </p>
+        <p> Graduation Year: <%= graduation %> </p>
+        <p> Wants pets: <%= pets %> </p>
+        <p> Does smoke: <%= smoke %> </p>
+        <p> Status: <%= statuss %> </p>
+      </div>
+      </div>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <p> =========================================================================================== </p>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+    <% } %>
     <% i = i + 1 %>
   <% }) %>
-  <% if(gender == gender2 && program == program2) { %>
-      <p> Name: <%= name %> </p>
-      <p> Gender: <%= gender %> </p>
-      <p> Program: <%= program %> </p>
-      <p> Age: <%= age %> </p>
-      <p> Graduation Year:<%= graduation %> </p>
-      <p> Want pets: <%= pets %> </p>
-      <p> Do smoke: <%= smoke %> </p>
-      <p> Status: <%= statuss %> </p>
-  <% } %>
-  <% if(gender1 == gender2 && program1 == program2) { %>
-                        <p> Name: <%= name1 %> </p>
-                        <p> Gender: <%= gender1 %> </p>
-                        <p> Program: <%= program1 %> </p>
-                        <p> Age: <%= age1 %> </p>
-                        <p> Graduation Year: <%= graduation1 %> </p>
-                        <p> Wants pets: <%= pets1 %> </p>
-                        <p> Does smoke: <%= smoke1 %> </p>
-                        <p> Status: <%= statuss1 %> </p>
-
-  <% } %>
-  <% if(gender3 == gender2 && program3 == program2) { %>
-                        <p> <%= name3 %> </p>
-                        <p> <%= gender3 %> </p>
-                        <p> <%= program3 %> </p>
-                        <p> <%= age3 %> </p>
-                        <p> <%= graduation3 %> </p>
-                        <p> <%= pets3 %> </p>
-                        <p> <%= smoke3 %> </p>
-                        <p> <%= statuss3 %> </p>
-  <% } %>
-
-
 
 
 </body>
@@ -225,5 +191,31 @@ body {
   background-image: url("top2.png");
   background-repeat: no-repeat;
 }
+
+.logo {
+  display: block;
+  margin:-60px auto;
+}
+
+h1 {
+  text-align: center;
+  font-family: Verdana;
+  font-size: 50px;
+}
+
+p {
+  font-family: Verdana;
+  font-size: 20px;
+}
+
+.profile {
+  display: flex;
+  column-gap: 10px;
+}
+
+.text {
+  padding: 10px;
+}
+
 </style>
 </html>
