@@ -42,6 +42,7 @@
     window.location.href = "/log";
   }
 
+
 </script>
 </head>
 <body>
@@ -59,29 +60,79 @@
     <form method="post" action="/search">
   <div class="info">
     <div class="left-section">
-      <label for="firstname">First Name</label>
-      <input type="text" id="firstname" name="firstname" placeholder="Enter your first name">
-      <label for="lastname">Last Name</label>
-      <input type="text" id="lastname" name="lastname" placeholder="Enter your last name">
       <label for="gender">Gender</label>
-      <input type="text" id="gender" name="gender" placeholder="Enter your gender">
-      <label for="smoke">Smoke</label>
-      <input type="text" id="smoke" name="smoke" placeholder="Enter your smoking preference">
-      <label for="guest">Guest</label>
-      <input type="text" id="guest" name="guest" placeholder="Enter your guest preference">
-    </div>
+      <select id="gender" name="gender">
+      <option value="" selected="selected">Select gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+      <option value="Prefer not to say">Prefer not to say</option>
+    </select>
+    <label for="smoke">Smoke</label>
+    <select id="smoke" name="smoke">
+      <option value="" selected="selected">Do you smoke?</option>
+      <option value=true>Yes</option>
+      <option value=false>No</option>
+    </select>
+    <label for="guest">Guest</label>
+    <select id="guest" name="guest">
+      <option value="" selected="selected">Do you want any guests?</option>
+      <option value=true>Yes</option>
+      <option value=false>No</option>
+    </select>
+    <label for="status">Status</label>
+      <select id="status" name="status">
+        <option value="" selected="selected">Are you single?</option>
+        <option value=true>Yes</option>
+        <option value=false>No</option>
+      </select>
+  </div>
     <div class="right-section">
-
-      <label for="status">Status</label>
-      <input type="text" id="status" name="status" placeholder="Enter your status">
       <label for="pets">Pets?</label>
-      <input type="text" id="pets" name="pets" placeholder="Enter your pet preference">
-      <label for="school">School</label>
-      <input type="text" id="school" name="school" placeholder="Enter your school name">
+      <select id="pets" name="pets">
+        <option value="" selected="selected">Do you have or want any pets?</option>
+        <option value=true>Yes</option>
+        <option value=false>No</option>
+      </select>
+      <label for"school">School</label>
+      <select id="school" name="school">
+        <option value="" selected="selected">Select school you are in</option>
+        <option value="College of Engineering">College of Engineering</option>
+        <option value="College of Education">College of Education</option>
+      </select>
       <label for="program">Program</label>
-      <input type="text" id="program" name="program" placeholder="Enter your program">
+      <select id="program" name="program">
+        <option value="" selected="selected">Select your program</option>
+        <option value="biomedical engineering">Biomedical Engineering</option>
+        <option value="computer engineering">Computer Engineering</option>
+        <option value="computer science">Computer Science</option>
+        <option value="construction management">Construction Management</option>
+        <option value="cybersecurity">Cybersecurity</option>
+        <option value="electrical engineering">Electrical Engineering</option>
+        <option value="material science and egineering">Material Science and Engineering</option>
+        <option value="mechanical and energy engineering">Mechanical and Energy Engineering</option>
+        <option value="information technology">Information Technology</option>
+        <option value="community and family services">Community and Family Services</option>
+        <option value="human dev and family sci">Human Dev and Family Sci</option>
+        <option value="individual and family">Individual and Family</option>
+        <option value="allied health">Allied Health</option>
+        <option value="health behavior and fitness">Health Behavior and Fitness</option>
+        <option value="physical education">Physical Education</option>
+        <option value="sport and exercises">Sport and Exercises</option>
+        <option value="bilingual education">Bilingual Education</option>
+        <option value="elementary education">Elementary Education</option>
+        <option value="special education">Special Education</option>
+      </select>
       <label for="gradyear">Graduation Year</label>
-      <input type="text" id="gradyear" name="gradyear" placeholder="Enter your graduation year">
+      <select id="gradyear" name="gradyear">
+        <option value="" selected="selected">Select your graduation year</option>
+        <option value=2023>2023</option>
+        <option value=2024>2024</option>
+        <option value=2025>2025</option>
+        <option value=2026>2026</option>
+        <option value=2027>2027</option>
+        <option value=2028>2028</option>
+        </select>
     </div>
   </div>
   <input type="submit" value="Submit">
@@ -177,6 +228,10 @@ label {
   font-weight: bold;
 }
 input[type="text"] {
+  width: 100%;
+  height: 25px;
+}
+select {
   width: 100%;
   height: 25px;
 }
