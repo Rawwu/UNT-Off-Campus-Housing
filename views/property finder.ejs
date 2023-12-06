@@ -73,21 +73,32 @@
 		properties.forEach((property) => {
 			const li = document.createElement('li');
 
-			// Create HTML content for each property
-			li.innerHTML = `
-				<h3>${property.name}<h3>
-				<h4>${property.address.street}, ${property.address.city}, ${property.address.state}</h4>
-				<p>$${property.details.price} | ${property.details.bedrooms} Bed / ${property.details.bathrooms} Bath / ${property.details.square_footage} sq ft</p>
-				${property.amenities
-					? `<p>Amenities: 
-						${property.amenities.parking ? 'Parking ' : ''}
-						${property.amenities.pets_allowed ? 'Pets Allowed ' : ''}
-						${property.amenities.pool ? 'Pool ' : ''}
-						${property.amenities.furnished ? 'Furnished ' : ''}
-					</p>`
-					: '<p>No amenities specified</p>'}
-				<p>Type: ${property.type}</p>
-				<p><a href="${property.website}" target="_blank">Website</a></p>`;  // Modified line for the website
+		// Create HTML content for each property
+		li.innerHTML = `
+			<li class="property-item">
+				<!-- Display property image on the left -->
+				<div class="property-image">
+					<img src="${property.image_url}" alt="${property.name} Image">
+				</div>
+
+				<!-- Display property details on the right -->
+				<div class="property-details">
+					<h3>${property.name}</h3>
+					<h4>${property.address.street}, ${property.address.city}, ${property.address.state}</h4>
+					<p>$${property.details.price} | ${property.details.bedrooms} Bed / ${property.details.bathrooms} Bath / ${property.details.square_footage} sq ft</p>
+					${property.amenities
+						? `<p>Amenities: 
+							${property.amenities.parking ? 'Parking ' : ''}
+							${property.amenities.pets_allowed ? 'Pets Allowed ' : ''}
+							${property.amenities.pool ? 'Pool ' : ''}
+							${property.amenities.furnished ? 'Furnished ' : ''}
+						</p>`
+						: '<p>No amenities specified</p>'}
+					<p>Type: ${property.type}</p>
+					<p><a href="${property.website}" target="_blank">Website</a></p>
+				</div>
+			</li>`;
+
 
 			// Append list item to the unordered list
 			ul.appendChild(li);
@@ -213,10 +224,18 @@
 		<ul>
 		<!-- <% console.log(properties); %> -->
 		<% for (const property of properties) { %>
-			<li>
-			<h3><%= property.name %></h3>
-			<h4><%= property.address.street %>, <%= property.address.city %>, <%= property.address.state %></h4>
-			<p>$<%= property.details.price %> | <%= property.details.bedrooms %> Bed / <%= property.details.bathrooms %> Bath / <%= property.details.square_footage %> sq ft</p>
+            <li class="property-item">
+                <!-- Display property image on the left -->
+                <div class="property-image">
+                    <img src="<%= property.image_url %>" alt="<%= property.name %> Image">
+                </div>
+
+                <!-- Display property details on the right -->
+                <div class="property-details">
+                    <h3><%= property.name %></h3>
+                    <h4><%= property.address.street %>, <%= property.address.city %>, <%= property.address.state %></h4>
+                    <p>$<%= property.details.price %> | <%= property.details.bedrooms %> Bed / <%= property.details.bathrooms %> Bath / <%= property.details.square_footage %> sq ft</p>
+
 	
 			<% if (property.amenities) { %>
 				<p>Amenities: 
@@ -275,6 +294,27 @@
   </script>
 </body>
 <style>
+/* Property information styling */
+.property-item {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.property-image {
+    width: 250px;
+    margin-right: 20px;
+    margin-top: 85px;
+}
+
+.property-image img {
+    width: 100%;
+    height: auto;
+}
+
+.property-details {
+    flex: 1;
+}
+/******************/
 .dropbtn {
     background-color: #454545;
     color: white;

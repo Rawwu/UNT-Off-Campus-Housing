@@ -61,7 +61,8 @@ const propertySchema = new mongoose.Schema({
         furnished: Boolean
     },
 	website: String,
-	name: String
+	name: String,
+	image_url: String
 });
 
 let Property;
