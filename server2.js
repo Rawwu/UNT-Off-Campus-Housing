@@ -59,7 +59,9 @@ const propertySchema = new mongoose.Schema({
         pets_allowed: Boolean,
         pool: Boolean,
         furnished: Boolean
-    }
+    },
+	website: String,
+	name: String
 });
 
 let Property;
