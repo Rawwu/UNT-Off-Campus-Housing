@@ -75,7 +75,8 @@
 
 			// Create HTML content for each property
 			li.innerHTML = `
-				<h3>${property.address.street}, ${property.address.city}, ${property.address.state}</h3>
+				<h3>${property.name}<h3>
+				<h4>${property.address.street}, ${property.address.city}, ${property.address.state}</h4>
 				<p>$${property.details.price} | ${property.details.bedrooms} Bed / ${property.details.bathrooms} Bath / ${property.details.square_footage} sq ft</p>
 				${property.amenities
 					? `<p>Amenities: 
