@@ -28,7 +28,7 @@ async function connectToDatabase() {
 
 // Define a schema for Property model (modify it according to your data structure)
 const roommateSchema = new mongoose.Schema({
-    name: String,
+	name: String,
     gender: String,
     program: String,
     age: Number,
@@ -60,54 +60,120 @@ const propertySchema = new mongoose.Schema({
         pool: Boolean,
         furnished: Boolean
     },
-	website: String,
-	name: String,
-	image_url: String
+		website: String,
+		name: String,
+		image_url: String
+});
+
+const userSchema = new mongoose.Schema({
+	fname: String,
+	lname: String,
+	email: String,
+	pass: String
 });
 
 let Property;
 let Roommate;
 let Search;
+let User;
+let log = "no";
+let email = "";
+let pass = "";
 
 // Wait for the database connection before defining the model
 connectToDatabase().then(() => {
     Roommate = mongoose.model('Roommate', roommateSchema, 'Roommate Finder');
     Search = mongoose.model('Search', roommateSchema, 'search');
     Property = mongoose.model('Property', propertySchema, 'Properties');
+	User = mongoose.model('User', userSchema, 'User Profile');
 
 	// Route to get all properties
 	app.get('/', (req, res) => {
 		res.render('Home Page');
 		});
 		app.get('/roommate', (req, res) => {
-		res.render('index2');
+		if (log == "yes") {
+			res.render('index2 log');
+		}
+		if (log == "no") {
+			res.render('index2');
+		}
 		});
 		app.get('/home', (req, res) => {
+		if (log == "no") {
+			res.render('Home Page');
+		}
+		if (log == "yes") {
+			res.render('Home Page log');
+		}
+		});
+		app.get('/logout', (req, res) => {
+		log = "no";
 		res.render('Home Page');
 		});
+		app.post('/homel', async (req, res) => {
+		log = "yes";
+		const email2 = req.body.email;
+		const pass2 = req.body.password;
+		if (email2 == email) {
+			if (pass2 == pass) {
+				res.render('Home Page log');
+			}
+		}
+		else {
+			res.render('try');
+		}
+		});
 		app.get('/account', (req, res) => {
-		res.render('Account Manager');
+		if (log == "yes") {
+			res.render('Account Manager log');
+		}
+		if (log == "no") {
+			res.render('Account Manager');
+		}
 		});
 		app.get('/resource', (req, res) => {
-		res.render('Resource Page');
+		
+		if (log == "yes") {
+			res.render('Resource Page log');
+		}
+		if (log == "no") {
+			res.render('Resource Page');
+		}
 		});
 		app.get('/contact', (req, res) => {
-		res.render('contact');
+		if (log == "yes") {
+			res.render('contact log');
+		}
+		if (log == "no") {
+			res.render('contact');
+		}
 		});
 		app.get('/reg', (req, res) => {
 		res.render('reg');
 		});
 		app.get('/log', (req, res) => {
+		log = "no";
 		res.render('login');
 		});
 		app.get('/propm', (req, res) => {
-		res.render('Prop_Manager');
+		if (log == "yes") {
+			res.render('Prop_Manager log');
+		}
+		if (log == "no") {
+			res.render('Prop_Manager');
+		}
 		});
 		// Route to render property finder page
 		app.get('/propf', async (req, res) => {
 			try {
 				const properties = await Property.find();
-				res.render('property finder', { properties: properties });
+				if (log == "yes") {
+					res.render('property finder log', { properties: properties });
+				}
+				if (log == "no") {
+					res.render('property finder', { properties: properties });
+				}
 			} catch (err) {
 				console.error('Error fetching properties:', err);
 				res.status(500).render('error', { error: 'Error fetching properties' });
@@ -117,7 +183,12 @@ connectToDatabase().then(() => {
 		app.get('/props', async (req, res) => {
 		try {
 			const properties = await Property.find();
-			res.render('saved properties', { properties: properties });
+			if (log == "yes") {
+				res.render('saved properties log', { properties: properties });
+			}
+			if (log == "no") {
+				res.render('saved properties', { properties: properties });
+			}
 		} catch (err) {
 			res.status(500).json({ message: err.message });
 		}
@@ -175,8 +246,35 @@ connectToDatabase().then(() => {
         ]);
 
         const roommates = await Roommate.find();
-        res.render('index', { roommates: roommates });
+        if (log == "yes") {
+			res.render('index log', { roommates: roommates });
+		}
+		if (log == "no") {
+			res.render('index', { roommates: roommates });
+		}
     });	
+	
+	app.post('/register', async (req, res) => {
+		const fname = req.body.firstName;
+		const lname = req.body.lastName;
+		email = req.body.email;
+		pass = req.body.password;
+		const gender = req.body.gender;
+        const program = req.body.program;
+        const age = req.body.age;
+        const graduation = req.body.gradyear;
+        const pets = req.body.pets;
+        const smoke = req.body.smoke;
+        const statuss = req.body.statuss;
+		const name = fname + " " + lname;
+		await User.create([
+			{ fname, lname, email, pass }
+		]);
+		await Roommate.create([
+            { name, gender, program, age, graduation, pets, smoke, statuss }
+        ]);
+		res.render('Home Page');
+	});
 
     // Start the server
     const port = process.env.PORT || 3000;
