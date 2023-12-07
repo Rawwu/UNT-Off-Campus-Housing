@@ -73,45 +73,46 @@
 		properties.forEach((property) => {
 			const li = document.createElement('li');
 
-		// Create HTML content for each property
-		li.innerHTML = `
-			<li class="property-item">
-				<!-- Display property image on the left -->
-				<div class="property-image">
-					<img src="${property.image_url}" alt="${property.name} Image">
-				</div>
+			// Create HTML content for each property
+			li.innerHTML = `
+				<li class="property-item">
+					<!-- Make property image clickable and link to the property website -->
+					<a href="${property.website}" target="_blank">
+						<!-- Display property image on the left -->
+						<div class="property-image">
+							<img src="${property.image_url}" alt="${property.name} Image">
+						</div>
+					</a>
 
-				<!-- Display property details on the right -->
-				<div class="property-details">
-					<h3>${property.name}</h3>
-					<h4>${property.address.street}, ${property.address.city}, ${property.address.state}</h4>
-					<p>$${property.details.price} | ${property.details.bedrooms} Bed / ${property.details.bathrooms} Bath / ${property.details.square_footage} sq ft</p>
-					${property.amenities
-						? `<p>Amenities: 
-							${property.amenities.parking ? 'Parking ' : ''}
-							${property.amenities.pets_allowed ? 'Pets Allowed ' : ''}
-							${property.amenities.pool ? 'Pool ' : ''}
-							${property.amenities.furnished ? 'Furnished ' : ''}
-						</p>`
-						: '<p>No amenities specified</p>'}
-					<p>Type: ${property.type}</p>
-					<p><a href="${property.website}" target="_blank">Website</a></p>
-				</div>
-			</li>`;
-
+					<!-- Display property details on the right -->
+					<div class="property-details">
+						<h3>${property.name}</h3>
+						<h4>${property.address.street}, ${property.address.city}, ${property.address.state}</h4>
+						<p>$${property.details.price} | ${property.details.bedrooms} Bed / ${property.details.bathrooms} Bath / ${property.details.square_footage} sq ft</p>
+						${property.amenities
+							? `<p>Amenities: 
+								${property.amenities.parking ? 'Parking ' : ''}
+								${property.amenities.pets_allowed ? 'Pets Allowed ' : ''}
+								${property.amenities.pool ? 'Pool ' : ''}
+								${property.amenities.furnished ? 'Furnished ' : ''}
+							</p>`
+							: '<p>No amenities specified</p>'}
+						<p>Type: ${property.type}</p>
+						<p><a href="${property.website}" target="_blank">Website</a></p>
+					</div>
+				</li>`;
 
 			// Append list item to the unordered list
 			ul.appendChild(li);
 		});
 
 
-
 		// Append the unordered list to the container
 		filteredPropertiesContainer.appendChild(ul);
 		} else {
-		// If no properties are found, display a message
-		filteredPropertiesContainer.innerHTML = '<p>No properties found.</p>';
-		}
+			// If no properties are found, display a message
+			filteredPropertiesContainer.innerHTML = '<p>No properties found.</p>';
+			}
 		}
     </script>
     <script>
@@ -187,7 +188,7 @@
   <input type="button" value="Sign in/Sign up" onclick="msg()">
 </form>
 
-  <!-- Add the following form for filtering -->
+  <!-- Form for filtering -->
   <form id="filterForm" onsubmit="submitFilterForm(); return false;">
     <label for="minPrice">Minimum Price:</label>
     <input type="text" id="minPrice" name="minPrice">
@@ -226,9 +227,12 @@
 		<% for (const property of properties) { %>
             <li class="property-item">
                 <!-- Display property image on the left -->
-                <div class="property-image">
-                    <img src="<%= property.image_url %>" alt="<%= property.name %> Image">
-                </div>
+				<a href="<%= property.website %>" target="_blank">
+                    <!-- Display property image on the left -->
+                    <div class="property-image">
+                        <img src="<%= property.image_url %>" alt="<%= property.name %> Image">
+                    </div>
+                </a>
 
                 <!-- Display property details on the right -->
                 <div class="property-details">
@@ -237,16 +241,24 @@
                     <p>$<%= property.details.price %> | <%= property.details.bedrooms %> Bed / <%= property.details.bathrooms %> Bath / <%= property.details.square_footage %> sq ft</p>
 
 	
-			<% if (property.amenities) { %>
-				<p>Amenities: 
-				<% if (property.amenities.parking) { %> Parking <% } %>
-				<% if (property.amenities.pets_allowed) { %> Pets Allowed <% } %>
-				<% if (property.amenities.pool) { %> Pool <% } %>
-				<% if (property.amenities.furnished) { %> Furnished <% } %>
-				</p>
-			<% } else { %>
-				<p>No amenities specified</p>
-			<% } %>
+					<% if (property.amenities) { %>
+						<p>
+							<% if (property.amenities.parking !== undefined) { %>
+								Parking: <%= property.amenities.parking ? 'Yes' : 'No' %> |
+							<% } %>
+							<% if (property.amenities.pets_allowed !== undefined) { %>
+								Pets Allowed: <%= property.amenities.pets_allowed ? 'Yes' : 'No' %> |
+							<% } %>
+							<% if (property.amenities.pool !== undefined) { %>
+								Pool: <%= property.amenities.pool ? 'Yes' : 'No' %> |
+							<% } %>
+							<% if (property.amenities.furnished !== undefined) { %>
+								Furnished: <%= property.amenities.furnished ? 'Yes' : 'No' %>
+							<% } %>
+						</p>
+					<% } else { %>
+						<p>No amenities specified</p>
+					<% } %>		
 	
 			<p>Type: <%= property.type %></p>
 
@@ -315,6 +327,7 @@
     flex: 1;
 }
 /******************/
+
 .dropbtn {
     background-color: #454545;
     color: white;
@@ -803,7 +816,6 @@ img {
       display: flex;
     }
 
-    /* Style for the map (adjust dimensions as needed) */
     #map {
       width: 50%;
       height: 100vh;
@@ -835,15 +847,7 @@ img {
 		margin-top: 50px;
 	}
 
-  p {
-    color: white;
-  }
-
-  h3 {
-    color: white;
-  }
-
-  h2 {
+  p, h3, h2, h4 {
     color: white;
   }
 
