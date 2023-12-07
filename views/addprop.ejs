@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add property</title>
+        <!--Dropdown Menu div-->
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Menu</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="/home">Home</a>
+              <a href="/add">Properties</a>
+              <a href="/roommate">Find a roommate</a>
+              <a href="/account">Manage Your Account</a>
+              <a href="/resource">Resources</a>
+              <a href="/contact">Contact Us</a>
+            </div>
+        </div>
+        <!--Dropdown Menu scripts-->
+        <script>
+            /* When the user clicks on the button,
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
+            }
+
+            function msg() {
+              window.location.href = "/log";
+            }
+        </script>
+    </head>
+    <body>
+        <!--Logo image-->
+		<img src="unt housing logo 3.png" class="logo" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
+		<!--Sign in/up button-->
+		<form>
+			<input class="signin-btn" type="button" value="Sign in/Sign up" onclick="msg()">
+		</form>
+		<h1 class="page_title">Add Property</h1>
+        <div class="container">
+			<form class="form" action="/action_page.php">
+				<div class="top-btns">
+					<input class="btn" type="submit" value="Single Unit">
+					<input class="btn" type="submit" value="Multiple Units">
+				</div>
+				<div class="form_div">
+					<!--Property Type input-->
+					<label class="form_label" for="property type">Property Type</label><br>
+					<input type="text" class="form_input" id="prop-type" name="prop-type" placeholder=" ">
+				</div>
+				<div class="form_div">
+					<!--Property Type input-->
+					<label class="form_label" for="address">Address/Location</label><br>
+					<input type="text" class="form_input" id="address" name="address" placeholder=" ">
+				</div>
+				<!--FIXME - Both inputs needs to be side by side-->
+				<div class="form_div">
+					<!--Property Type input-->
+					<label class="form_label" for="numbeds">Number of Beds</label><br>
+					<input type="number" class="form_input" id="numbeds" name="numbeds" placeholder=" ">
+				</div>
+				<div class="form_div">
+					<!--Property Type input-->
+					<label class="form_label" for="numbaths">Number of Baths</label><br>
+					<input type="number" class="form_input" id="numbaths" name="numbaths" placeholder=" ">
+				</div>
+				<input class="add-btn" type="submit" value="Add">
+			</form>
+		</div>
+    </body>
+    <style>
+        img {
+            max-width: 100%;
+            max-height:100%;
+        }
+
+        .dropbtn {
+            background-color: black;
+            color: green;
+            padding: 4px 52.5px;
+            font-size: 30px;
+            border: none;
+            cursor: pointer;
+            font-family: Apple Chancery;
+        }
+
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: gray;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            z-index: 2;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: green;
+            min-width: 180px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            font-family: Apple Chancery;
+            font-size: 14px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {background-color: green;}
+
+        .show {display: block;}
+
+        .signin-btn {
+            background-color: black;
+            color: green;
+            padding: 4px 52.5px;
+            font-size: 30px;
+            border: none;
+            cursor: pointer;
+            font-family: Apple Chancery;
+            float: right;
+        }
+
+        body {
+            background-color: green;
+            background-image: url("top.png");
+            /*background-repeat: no-repeat;*/
+        }
+
+        .logo {
+            display: block;
+            margin:-60px auto;
+            z-index: 2;
+            position: relative;
+        }
+        .page_title {
+            color: black;
+            display: block;
+            padding: 20px 0px 20px 0px;
+            margin-top: 53px;
+            text-align: center;
+            z-index: 0;
+            position: relative;
+        }
+
+        ul {
+            list-style-type: none;
+            float: left;
+            font-size: 35px;
+            color: white;
+        }
+
+        h2, p {
+            color: white;
+            margin: 0px 0px 10px 0px;
+        }
+
+        li {
+            padding-bottom: 24px;
+        }
+
+        .apt_img {
+            width: 372px;
+            height: 258px;
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .prop_name {
+            margin: 0px 0px -30px 40px;
+        }
+
+        .container:not(button) {
+            display: flex;
+            align-items: center;
+            column-gap: 5px;
+        }
+
+        .btn_stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            margin-left: 85px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        button:not(.dropbtn) {
+            font-size: 18px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            width: 235px;
+            height: 40px;
+        }
+
+        .container {
+            display: flex;
+            position: relative;
+            top: 20vh;
+            justify-content: center;
+
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form {
+            position: absolute;
+            background: lightgray;
+            width: 100%;
+            max-width: 1200px;
+            padding: 1rem 2rem;
+            margin: 15rem 0 0 0;
+            height: auto;
+        }
+
+        .form_div {
+            position: relative;
+            height: 58px;
+            margin-bottom: 3.5rem;
+        }
+
+        .form_input {
+            display: block;
+            position: relative;
+
+            margin: 10px 0 0 3rem;
+            width: 40%;
+            height: 50%;
+
+        }
+
+        .form_label {
+            position: relative;
+            margin-left: 50px;
+            padding-bottom: 50px;
+            font-size: 25px;
+        }
+
+        .btn, .add-btn {
+            font-size: 18px;
+            width: 100%;
+            max-width: 300px;
+            height: 40px;
+            margin: 10px 20px;
+            cursor: pointer;
+        }
+
+        .top-btns {
+            display: flex;
+            justify-content: center;
+            margin: 30px 85px 20px;
+        }
+
+        .add-btn {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+        }
+    </style>
+</html>
