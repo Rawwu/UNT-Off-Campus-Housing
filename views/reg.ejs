@@ -9,12 +9,13 @@
 </head>
 
 <body>
-<form action="/home">
+<form method="post" action="/register">
   <div class="container">
 
     <h1>Register</h1>
 
     <hr>
+
 
     <label for="firstName"><b>First Name</b></label>
     <input type="text" placeholder="First Name" name="firstName" id="firstName" required>
@@ -23,7 +24,7 @@
     <label for="email"><b>Email</b></label>
     <input type="text" placeholder="Email" name="email" id="email" required>
     <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Password" name="password" id="password" required>
+    <input type="text" placeholder="Password" name="password" id="password" required>
     <label for="confirmPassword"><b>Confirm Password</b></label>
     <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" required>
     <label for="gender"><b>Gender</b></label>
@@ -35,7 +36,7 @@
 
 
       <label for="status"><b>Status</b></label>
-      <input type="text" id="status" name="status" placeholder="Enter your status">
+      <input type="text" id="statuss" name="statuss" placeholder="Enter your status">
       <label for="pets"><b>Pets?</b></label>
       <input type="text" id="pets" name="pets" placeholder="Enter your pet preference">
       <label for="school"><b>School</b></label>
