@@ -77,8 +77,8 @@ let Roommate;
 let Search;
 let User;
 let log = "no";
-let email = "";
-let pass = "";
+let email;
+let pass;
 
 // Wait for the database connection before defining the model
 connectToDatabase().then(() => {
@@ -124,9 +124,13 @@ connectToDatabase().then(() => {
 			res.render('try');
 		}
 		});
-		app.get('/account', (req, res) => {
+		app.get('/account', async (req, res) => {
+		await User.create([
+			{ email, pass }
+		]);
+		const users = await User.find()
 		if (log == "yes") {
-			res.render('Account Manager log');
+			res.render('Account Manager log', { users: users });
 		}
 		if (log == "no") {
 			res.render('Account Manager');
