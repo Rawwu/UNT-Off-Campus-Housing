@@ -168,6 +168,14 @@ connectToDatabase().then(() => {
 			res.render('Prop_Manager');
 		}
 		});
+		app.get('/add', (req, res) => {
+		if (log == "yes") {
+			res.render('addprop log');
+		}
+		if (log == "no") {
+			res.render('addprop');
+		}
+		});
 		// Route to render property finder page
 		app.get('/propf', async (req, res) => {
 			try {
