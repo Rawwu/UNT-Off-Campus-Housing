@@ -42,23 +42,52 @@
     <title>Account Manager</title>
   </head>
   <body>
+
   <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
   <form>
   <input type="button" value="Logout" onclick="msg()">
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name: Andrew Bradford</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: AndrewBradford2@my.unt.edu</p>
+  <% var i = 0 %>
+  <% var j = 0 %>
+  <% var k = 0 %>
+  <% var email = email %>
+  <% var email2 = email2 %>
+  <% var pass = pass %>
+  <% var pass2 = pass2 %>
+  <% var fname = fname %>
+  <% var lname = lname %>
+  <% let check %>
+  <%users.forEach(user => {%>
+    <% j = j + 1 %>
+  <% }) %>
+  <%users.forEach(user => {%>
+    <% if(k == j-1) { %>
+      <% email = user.email %>
+      <% pass = user.pass %>
+    <% } %>
+    <% k = k + 1 %>
+  <% }) %>
+  <% users.forEach(user => { %>
+    <% email2 = user.email %>
+    <% pass2 = user.pass %>
+    <% fname = user.fname %>
+    <% lname = user.lname %>
+    <% if(email == email2 && pass == pass2 && i != j-1 && fname !== check) { %>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name: <%= fname %>  <%= lname %></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: <%= email %></p>
+    <% } %>
+  <% }) %>
 </br>
 </br>
 </br>
