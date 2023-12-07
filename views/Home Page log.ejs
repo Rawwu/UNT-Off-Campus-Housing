@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Menu</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="/home">Home</a>
+      <a href="/Users/andrew.bradford/Desktop/Coding/Interactive Journal Links.html">Properties</a>
+      <a href="/roommate">Find a roommate</a>
+      <a href="/account">Manage Your Account</a>
+      <a href="/resource">Resources</a>
+      <a href="/contact">Contact Us</a>
+    </div>
+  </div>
+
+  <script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  function msg() {
+    window.location.href = "/logout";
+  }
+  </script>
+    <title>Home Page</title>
+  </head>
+  <body>
+        <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
+        <form>
+        <input type="button" value="Logout" onclick="msg()">
+      </form>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+      <form action="/propf">
+        <input type="search" id="gsearch" name="gsearch" size="100" placeholder="Search for where you want to live">
+        <input type="submit">
+    </form>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    <div class="housing">
+      <h1>Housing in Denton:</h1>
+    </div>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    <div class="inv">
+      <h2>this text is to make the page larger</h2>
+    </div>
+  </body>
+  <style>
+  .dropbtn {
+      background-color: #454545;
+      color: white;
+      padding: 4px 52.5px;
+      font-size: 30px;
+      border: none;
+      cursor: pointer;
+      font-family: Verdana;
+  }
+
+  .dropbtn:hover, .dropbtn:focus {
+      background-color: gray;
+  }
+
+  .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #36ab3a;
+      min-width: 180px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      font-family: Verdana;
+      font-size: 14px;
+  }
+
+  .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
+
+  .dropdown a:hover {background-color: #36ab3a;}
+
+  .show {display: block;}
+
+  .inv {
+    color: green;
+  }
+
+  .housing{
+    color: white;
+    font-family: Verdana;
+    margin: 0 25px;
+  }
+
+  input[type="search"] {
+    padding: 12px 20px;
+    margin: 0 400px;
+  }
+
+  input[type="submit"] {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: Verdana;
+    font-size: 20px;
+    margin: 20px 700px;
+  }
+
+  input[type="button"] {
+    background-color: #454545;
+    color: white;
+    padding: 4px 52.5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana;
+    margin: -20px 1220px;
+  }
+
+  body {
+    background-color: green;
+    background-image: url("camp.png"), url("top2.png"), url("h1.png");
+    background-repeat: no-repeat, no-repeat, no-repeat;
+  }
+
+  img {
+    display: block;
+    margin:-60px auto;
+  }
+
+
+
+  </style>
+</html>

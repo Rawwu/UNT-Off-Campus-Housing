@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Roommate Finder</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Menu</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="/home">Home</a>
+    <a href="/Users/andrew.bradford/Desktop/Coding/Interactive Journal Links.html">Properties</a>
+    <a href="/roommate">Find a roommate</a>
+    <a href="/account">Manage Your Account</a>
+    <a href="/resource">Resources</a>
+    <a href="/contact">Contact Us</a>
+  </div>
+</div>
+  <script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  function msg() {
+    window.location.href = "/logout";
+  }
+
+
+</script>
+</head>
+<body>
+  <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
+  <form>
+  <input type="button" value="Log out" onclick="msg()">
+</br>
+</br>
+</br>
+  <div class="header">
+    <h1>Roommate Finder</h1>
+  </div>
+  <form action="/search">
+  </form>
+    <form method="post" action="/search">
+  <div class="info">
+    <div class="left-section">
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender">
+      <option value="" selected="selected">Select gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+      <option value="Prefer not to say">Prefer not to say</option>
+    </select>
+    <label for="smoke">Smoke</label>
+    <select id="smoke" name="smoke">
+      <option value="" selected="selected">Do you smoke?</option>
+      <option value=true>Yes</option>
+      <option value=false>No</option>
+    </select>
+    <label for="guest">Guest</label>
+    <select id="guest" name="guest">
+      <option value="" selected="selected">Do you want any guests?</option>
+      <option value=true>Yes</option>
+      <option value=false>No</option>
+    </select>
+    <label for="status">Status</label>
+    <select id="status" name="status">
+      <option value="" selected="selected">Are you single?</option>
+      <option value=true>Yes</option>
+      <option value=false>No</option>
+    </select>
+  </div>
+    <div class="right-section">
+      <label for="pets">Pets?</label>
+      <select id="pets" name="pets">
+        <option value="" selected="selected">Do you have or want any pets?</option>
+        <option value=true>Yes</option>
+        <option value=false>No</option>
+      </select>
+      <label for"school">School</label>
+      <select id="school" name="school">
+        <option value="" selected="selected">Select school you are in</option>
+        <option value="College of Engineering">College of Engineering</option>
+        <option value="College of Education">College of Education</option>
+      </select>
+      <label for="program">Program</label>
+      <select id="program" name="program">
+        <option value="" selected="selected">Select your program</option>
+        <option value="biomedical engineering">Biomedical Engineering</option>
+        <option value="computer engineering">Computer Engineering</option>
+        <option value="computer science">Computer Science</option>
+        <option value="construction management">Construction Management</option>
+        <option value="cybersecurity">Cybersecurity</option>
+        <option value="electrical engineering">Electrical Engineering</option>
+        <option value="material science and egineering">Material Science and Engineering</option>
+        <option value="mechanical and energy engineering">Mechanical and Energy Engineering</option>
+        <option value="information technology">Information Technology</option>
+        <option value="community and family services">Community and Family Services</option>
+        <option value="human dev and family sci">Human Dev and Family Sci</option>
+        <option value="individual and family">Individual and Family</option>
+        <option value="allied health">Allied Health</option>
+        <option value="health behavior and fitness">Health Behavior and Fitness</option>
+        <option value="physical education">Physical Education</option>
+        <option value="sport and exercises">Sport and Exercises</option>
+        <option value="bilingual education">Bilingual Education</option>
+        <option value="elementary education">Elementary Education</option>
+        <option value="special education">Special Education</option>
+      </select>
+      <label for="gradyear">Graduation Year</label>
+      <select id="gradyear" name="gradyear">
+        <option value="" selected="selected">Select your graduation year</option>
+        <option value=2023>2023</option>
+        <option value=2024>2024</option>
+        <option value=2025>2025</option>
+        <option value=2026>2026</option>
+        <option value=2027>2027</option>
+        <option value=2028>2028</option>
+        </select>
+    </div>
+  </div>
+  <input type="submit" value="Submit">
+</form>
+</br>
+<p id="num"></p>
+</body>
+<style>
+.dropbtn {
+    background-color: #454545;
+    color: white;
+    padding: 4px 52.5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: gray;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #36ab3a;
+    min-width: 180px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-family: Verdana;
+    font-size: 14px;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #36ab3a;}
+
+.show {display: block;}
+
+input[type="button"] {
+  background-color: #454545;
+  color: white;
+  padding: 4px 52.5px;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  font-family: Verdana;
+  margin: -20px 1220px;
+}
+
+body {
+  background-color: darkgray;
+  font-family: Arial, sans-serif;
+  background-image: url("top2.png");
+  background-repeat: no-repeat;
+}
+.header {
+  background-color: darkgreen;
+  padding: 10px;
+  width: 2000px;
+  margin: 0 -10px;
+}
+h1 {
+  color: white;
+  margin: 0;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.left-section {
+  width: 40%;
+}
+.right-section {
+  width: 55%;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+input[type="text"] {
+  width: 100%;
+  height: 25px;
+}
+select {
+  width: 100%;
+  height: 25px;
+}
+img {
+  display: block;
+  margin:-60px auto;
+}
+
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  width: 70px;
+  padding: 70px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</html>

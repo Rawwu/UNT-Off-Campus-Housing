@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Menu</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="/home">Home</a>
+      <a href="/Users/andrew.bradford/Desktop/Coding/Interactive Journal Links.html">Properties</a>
+      <a href="/roommate">Find a roommate</a>
+      <a href="/account">Manage Your Account</a>
+      <a href="/resource">Resources</a>
+      <a href="/contact">Contact Us</a>
+    </div>
+  </div>
+
+  <script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  function msg() {
+    window.location.href = "/logout";
+  }
+</script>
+    <title>Account Manager</title>
+  </head>
+  <body>
+  <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
+  <form>
+  <input type="button" value="Logout" onclick="msg()">
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name: Andrew Bradford</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: AndrewBradford2@my.unt.edu</p>
+</br>
+</br>
+</br>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="">Payments</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="">Change Password</a>
+</p>
+<div class="sp">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="/propsl">Saved Properties</a></p>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/propml">Manage Owned Properties</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Delete Account</a></p>
+</br>
+</br>
+<p></p>
+  </body>
+  <style>
+    .dropbtn {
+        background-color: #454545;
+        color: white;
+        padding: 4px 52.5px;
+        font-size: 30px;
+        border: none;
+        cursor: pointer;
+        font-family: Verdana;
+    }
+
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: gray;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #36ab3a;
+        min-width: 180px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        font-family: Verdana;
+        font-size: 14px;
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown a:hover {background-color: #36ab3a;}
+
+    .show {display: block;}
+
+    .sp {
+      margin: 60px 0;
+    }
+
+    input[type="button"] {
+      background-color: #454545;
+      color: white;
+      padding: 4px 52.5px;
+      font-size: 30px;
+      border: none;
+      cursor: pointer;
+      font-family: Verdana;
+      margin: -20px 1220px;
+    }
+
+    body {
+      background-image: url("top2.png"), url("Account Manager Background.png");
+      background-repeat: no-repeat, no-repeat;
+    }
+
+    img {
+      display: block;
+      margin:-60px auto;
+    }
+
+    p {
+      font-size: 37px;
+      font-family: Verdana;
+    }
+
+  </style>
+</html>

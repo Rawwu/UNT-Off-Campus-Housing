@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale">
+  <title>Document</title>
+  <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Menu</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="/home">Home</a>
+    <a href="/Users/andrew.bradford/Desktop/Coding/Interactive Journal Links.html">Properties</a>
+    <a href="/roommate">Find a roommate</a>
+    <a href="/account">Manage Your Account</a>
+    <a href="/resource">Resources</a>
+    <a href="/contact">Contact Us</a>
+  </div>
+</div>
+  <script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  function msg() {
+    window.location.href = "/logout";
+  }
+  </script>
+</head>
+<body>
+  <div id="logo" class="logo">
+  <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;margin:-60px auto;display:block;">
+</div>
+  <form>
+  <input type="button" value="Log out" onclick="msg()">
+</br>
+</br>
+</br>
+  <h1>Roommate Finder</h1>
+  <% var i = 0 %>
+  <% var j = 0 %>
+  <% var k = 0 %>
+  <% var name = name %>
+  <% var gender = gender %>
+  <% var program = program %>
+  <% var age = age %>
+  <% var graduation = graduation %>
+  <% var pets = pets %>
+  <% var smoke = smoke %>
+  <% var statuss = statuss %>
+  <% var name2 = name2 %>
+  <% var gender2 = gender2 %>
+  <% var program2 = program2 %>
+  <% var age2 = age2 %>
+  <% var graduation2 = graduation2 %>
+  <% var pets2 = pets2 %>
+  <% var smoke2 = smoke2 %>
+  <% var statuss2 = statuss2 %>
+  <% let check %>
+  <%roommates.forEach(roommate => {%>
+    <% j = j + 1 %>
+  <% }) %>
+  <%roommates.forEach(roommate => {%>
+    <% if(k == j-1) { %>
+      <% name2 = roommate.name %>
+      <% gender2 = roommate.gender %>
+      <% program2 = roommate.program %>
+      <% age2 = roommate.age %>
+      <% graduation2 = roommate.graduation %>
+      <% pets2 = roommate.pets %>
+      <% smoke2 = roommate.smoke %>
+      <% statuss2 = roommate.statuss %>
+      <% gender2 = gender2.toLowerCase() %>
+      <% program2 = program2.toLowerCase() %>
+    <% } %>
+    <% k = k + 1 %>
+  <% }) %>
+  <%roommates.forEach(roommate => {%>
+    <% name = roommate.name %>
+    <% gender = roommate.gender %>
+    <% program = roommate.program %>
+    <% age = roommate.age %>
+    <% graduation = roommate.graduation %>
+    <% pets = roommate.pets %>
+    <% smoke = roommate.smoke %>
+    <% statuss = roommate.statuss %>
+    <% if(gender == gender2 && program == program2 && i != j-1 && statuss !== check) { %>
+        <div class="profile">
+        <% if(gender2 == "female") {%>
+          <img src="sw.jpg" alt="picture of Sigourney Weaver from Alien">
+        <% } %>
+        <% if(gender2 == "male") {%>
+          <img src="kr.jpg" alt="picture of Keanu Reeves from Bill and Ted">
+        <% } %>
+        <div class="text">
+        <p> Name: <%= name %> </p>
+        <p> Gender: <%= gender %> </p>
+        <p> Program: <%= program %> </p>
+        <p> Age: <%= age %>        </p>
+        <p> Graduation Year: <%= graduation %> </p>
+        <p> Wants pets: <%= pets %> </p>
+        <p> Does smoke: <%= smoke %> </p>
+        <p> Status: <%= statuss %> </p>
+      </div>
+      </div>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <p> =========================================================================================== </p>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+    <% } %>
+    <% i = i + 1 %>
+  <% }) %>
+
+
+</body>
+<style>
+.dropbtn {
+    background-color: #454545;
+    color: white;
+    padding: 4px 52.5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: Verdana;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: gray;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #36ab3a;
+    min-width: 180px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-family: Verdana;
+    font-size: 14px;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #36ab3a;}
+
+.show {display: block;}
+
+input[type="button"] {
+  background-color: #454545;
+  color: white;
+  padding: 4px 52.5px;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  font-family: Verdana;
+  margin: -20px 1220px;
+}
+
+body {
+  background-color: darkgray;
+  font-family: Arial, sans-serif;
+  background-image: url("top2.png");
+  background-repeat: no-repeat;
+}
+
+.logo {
+  display: block;
+  margin:-60px auto;
+}
+
+h1 {
+  text-align: center;
+  font-family: Verdana;
+  font-size: 50px;
+}
+
+p {
+  font-family: Verdana;
+  font-size: 20px;
+}
+
+.profile {
+  display: flex;
+  column-gap: 10px;
+}
+
+.text {
+  padding: 10px;
+}
+
+</style>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Menu</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="/home">Home</a>
+      <a href="/Users/andrew.bradford/Desktop/Coding/Interactive Journal Links.html">Properties</a>
+      <a href="/roommate">Find a roommate</a>
+      <a href="/account">Manage Your Account</a>
+      <a href="/resource">Resources</a>
+      <a href="/contact">Contact Us</a>
+    </div>
+  </div>
+
+  <script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  function msg() {
+    window.location.href = "/logout";
+  }
+</script>
+    <title>Resource Page</title>
+  </head>
+  <body>
+  <img src="unt housing logo 4.png" alt="UNT Student Off-Campus Housing Logo" style="width:300px;height:90px;">
+  <form>
+  <input type="button" value="Logout" onclick="msg()">
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="">Hotels</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="">Products</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="">Partners</a></p>
+</br>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Bus Route</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="">Police</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="">Housing Fairs</a></p>
+</br>
+</br>
+<p></p>
+  </body>
+  <style>
+    .dropbtn {
+        background-color: #454545;
+        color: white;
+        padding: 4px 52.5px;
+        font-size: 30px;
+        border: none;
+        cursor: pointer;
+        font-family: Verdana;
+    }
+
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: gray;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #36ab3a;
+        min-width: 180px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        font-family: Verdana;
+        font-size: 14px;
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown a:hover {background-color: #36ab3a;}
+
+    .show {display: block;}
+
+    input[type="button"] {
+      background-color: #454545;
+      color: white;
+      padding: 4px 52.5px;
+      font-size: 30px;
+      border: none;
+      cursor: pointer;
+      margin: -20px 1220px;
+      font-family: Verdana;
+    }
+
+    body {
+      background-image: url("top.png"), url("rp.png");
+      background-repeat: no-repeat, no-repeat;
+    }
+
+    img {
+      display: block;
+      margin:-60px auto;
+    }
+
+    p {
+      font-size: 39px;
+      font-family: Verdana;
+    }
+
+  </style>
+</html>
